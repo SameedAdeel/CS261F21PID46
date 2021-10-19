@@ -126,11 +126,10 @@ def Scrapping(url):
             list_all.append(list_elements)
 
       #  print(list_all)
-    try:
-        df= pd.DataFrame(list_all,columns=['URL','Name','Genre','Description','Ratings','Size','Install','Offered By','Developer'])
-        df.to_excel('scrap.xlxs',index=False,encoding="utf-8")
-    except Exception as e:
-        print("e")
+    for i in range(0,len(list_all)):
+        list_all[i] = list(dict.fromkeys(list_all[i]))
+    df= pd.DataFrame(list_all,columns=['URL','Name','Genre','Description','Ratings','Size','Install','Offered By','Developer'])
+    df.to_excel('scraping_playstore.xlsx', header = True, index=False)
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
