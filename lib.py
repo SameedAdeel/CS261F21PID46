@@ -59,7 +59,7 @@ def Merge(A,low,m,high):
 # 3. MergeSort
 def MergeSort(arr,l,h):
     if l < h:
-        m=int((l+r-1)/2)
+        m=int((l+h-1)/2)
         MergeSort(arr,l,m)
         MergeSort(arr,m+1,h)
         Merge(arr,l,m,h)
