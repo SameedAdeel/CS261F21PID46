@@ -175,4 +175,14 @@ def QuickSort(arr,low,high):
         QuickSort(arr,pi+1,high)
 
 
-   
+def BubbleSort(arr):
+    count=len(arr)
+    swapped=False
+    for i in range(0,count-1):
+        swapped=False
+        for j in range (0,count-1):
+            if arr[j]> arr[j+1]:
+                arr[j],arr[j+1]=arr[j+1],arr[j]
+                swapped=True
+        if(not swapped):
+            break  
