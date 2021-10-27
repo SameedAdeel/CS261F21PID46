@@ -1,5 +1,26 @@
 # Algorithm for the sorting purpose
 # 1 InsertionSort
+
+'''
+  Description:
+    Insertion Sort is an Iterative algorithm.It is a stable algorithm
+  Time Complexity 
+    Best Case:
+            O(n)
+    Worst Case:
+            O(n^2)
+    Average Case:
+            O(n^2)
+    
+  Strengths
+    1. Stable algorithm means first element of duplicate come first the the second duplicate element
+    2. Perform well in small data set
+    3. Space require is minimal
+  Weekness
+    1. Does not  deal well for the huge list
+    2. Does not perform well as other algorithm
+    3. Useful for only small list
+'''
 def InsertionSort(Arr):
     for i in range(1,len(Arr)):
         key=Arr[i]
@@ -140,11 +161,11 @@ def QuickSelect(arr,left,right,k):
         return arr[k-1]
     elif k < pivotIndex :
         right = pivotIndex -1
-        return(quickSelect(arr,left,pivotIndex-1,k))
+        return(QuickSelect(arr,left,pivotIndex-1,k))
     
     else :
         left = pivotIndex+1
-        return(quickSelect(arr,pivotIndex+1,right,k))
+        return(QuickSelect(arr,pivotIndex+1,right,k))
 
 
 def QuickSort(arr,low,high):
