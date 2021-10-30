@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow1(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(621, 389)
@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(240, 40, 141, 31))
         font = QtGui.QFont()
         font.setFamily("century gothic")
-        font.setPointSize(-1)
+        #font.setPointSize(-1)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
@@ -89,7 +89,7 @@ class Ui_MainWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(0, 190, 186, 31))
         font = QtGui.QFont()
         font.setFamily("century gothic")
-        font.setPointSize(-1)
+        #font.setPointSize(-1)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("")
         self.pushButton.setObjectName("pushButton")
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_MainWindow1()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -10,8 +10,22 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from scrapping import Ui_MainWindow1
 
 class Ui_MainWindow(object):
+    def clickedMethod(self):
+        if self.lineEdit.text() == "Admin" and self.lineEdit_2.text() == "123" :
+            print("It is working")
+            self.lineEdit.clear()
+            self.lineEdit_2.clear()
+            self.window=QtWidgets.QMainWindow()
+            self.ui=Ui_MainWindow1()
+            self.ui.setupUi(self.window)
+            #self.hide()
+            self.window.show()
+
+        else :
+            print("Try again")
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 631)
@@ -75,6 +89,7 @@ class Ui_MainWindow(object):
         self.pushButton_2 = QtWidgets.QPushButton(self.frame)
         self.pushButton_2.setGeometry(QtCore.QRect(0, 370, 401, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.clicked.connect(self.clickedMethod)
         self.lineEdit = QtWidgets.QLineEdit(self.frame)
         self.lineEdit.setGeometry(QtCore.QRect(80, 110, 261, 51))
         self.lineEdit.setInputMask("")
@@ -109,7 +124,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "PushButton"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "username"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "password"))
-import img_rc
+#import img_rc
 
 if __name__ == "__main__":
     import sys
