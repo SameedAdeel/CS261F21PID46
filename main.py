@@ -1,8 +1,8 @@
-import lib 
+""" import lib 
 arr=[6,5,4,3,2,1]
 #lib.InsertionSort(arr)
 lib.QuickSort(arr,0,len(arr)-1)
-print("Result after the using Quick Sort",arr)
+print("Result after the using Quick Sort",arr) """
 """ 
 import googlescrapper
 import pandas as pd
@@ -33,3 +33,6 @@ googlescrapper.Scrapping('')
 googlescrapper.Scrapping('')
 googlescrapper.Scrapping('')
 """
+import login
+
+login.Login()

@@ -1,14 +1,11 @@
 import lib
 
-""" A=[2,1,4,3,5,6,8,7]
+arr=[6,5,4,3,2,1]
+#lib.InsertionSort(arr)
+lib.BubbleSort(arr)
+print("Result after the using Bubble Sort",arr)
 
-B=["Ali","Sameed"]
-a=len(A)-1
-lib.MergeSort(A,0,a)
-
-print(lib.Search(B,"Sameed"))
-print(A) """
-
+""" 
 import googlescrapper
 import pandas as pd
 import csv 
@@ -37,3 +34,4 @@ googlescrapper.Scrapping('')
 googlescrapper.Scrapping('')
 googlescrapper.Scrapping('')
 googlescrapper.Scrapping('')
+"""

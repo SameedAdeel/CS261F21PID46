@@ -9,9 +9,20 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import time
 
 class Ui_MainWindow1(object):
+    def clickedMethod(self):
+        import googlescrapper
+        self.count=googlescrapper.Scrapping(self.lineEdit.text())
+        self.completed = 0.01
+
+        while self.completed < self.count:
+            self.completed += 0.0001
+            self.progressBar.setValue(self.completed)
+        self.lineEdit.clear()
+    def stoped(self):
+        exit()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(621, 389)
@@ -93,6 +104,7 @@ class Ui_MainWindow1(object):
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.clickedMethod)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(420, 190, 201, 31))
         self.pushButton_2.setStyleSheet("")
@@ -101,6 +113,7 @@ class Ui_MainWindow1(object):
         self.pushButton_3.setGeometry(QtCore.QRect(210, 190, 186, 31))
         self.pushButton_3.setStyleSheet("")
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.clicked.connect(self.stoped)
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(0, 310, 621, 23))
         self.progressBar.setProperty("value", 0)

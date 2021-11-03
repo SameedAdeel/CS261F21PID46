@@ -130,8 +130,9 @@ def Scrapping(url):
     for i in range(0,len(list_all)):
         list_all[i] = list(dict.fromkeys(list_all[i]))
     df= pd.DataFrame(list_all,columns=['URL','Name','Genre','Description','Ratings','Size','Install','Offered By','Developer'])
-    df.to_excel('scraping_playstore.xlsx',mod='a',header = True, index=False)
+    df.to_csv('F:\UET Files\scraping_playstore.csv',mode='a',header = True, index=False)
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
+    return count
    # return list_all
