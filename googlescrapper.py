@@ -85,7 +85,10 @@ def Scrapping(url):
     for i in links_app :
         
         driver.get(i)
-        ratings = driver.find_element_by_class_name('BHMmbe')
+        try:
+            ratings = driver.find_element_by_class_name('BHMmbe')
+        except:
+            continue
         description = driver.find_element_by_class_name("W4P4ne")
         title=driver.find_element_by_class_name('AHFaub')
         genre=driver.find_element_by_tag_name('a')
