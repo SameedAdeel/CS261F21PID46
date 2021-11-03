@@ -37,6 +37,7 @@ for elem in elems :
 #print(str(title.text))
 #t=title
 #print(t.text)
+float(rat.replace(",",".")[0])
 for i in links_app :
     try:
         driver.get(i)
@@ -51,6 +52,20 @@ def Scrapping(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(url)
     time.sleep(10)
+    print(url)
+    Rating=[]
+    Title=[]
+    Desc=[]
+    Gen=[]
+    Installs=[]
+    Size=[]
+    url=[]   
+    Content =[]    
+    Offered =[]    
+    Developer=[]
+           
+
+    
 
     Scroll_time=5
 
@@ -83,16 +98,23 @@ def Scrapping(url):
 #print(t.text)
     list_all=[]
     for i in links_app :
-        
+        time.sleep(.01)
         driver.get(i)
+        rating=None
         try:
-            ratings = driver.find_element_by_class_name('BHMmbe')
+            rating = driver.find_element_by_class_name('BHMmbe')
         except:
             continue
         description = driver.find_element_by_class_name("W4P4ne")
         title=driver.find_element_by_class_name('AHFaub')
         genre=driver.find_element_by_tag_name('a')
-        rat=ratings.text 
+
+        url.append(i)
+        Rating.append(rating.text)
+        Title.append(title.text)
+        Desc.append(description.text)
+        Gen.append(genre.text)
+        #rat=4
 
         """  print(ratings.text)
         print(description.text)
@@ -105,35 +127,33 @@ def Scrapping(url):
             if x % 2 == 0 :
                 list_Others.append(Other[x].text)
         headings= driver.find_elements_by_class_name("BgcNfc")
-        list_elements=[i,title.text,genre.text,description.text,float(ratings.text.replace(",",".")[0])]
+
+        list_elements=[i,title.text,genre.text,description.text,float(rating.text.replace(",",".")[0])]
        
         for x in range (len(headings)):
            
             if headings[x].text == 'Installs' :
-                list_elements.append(list_Others[x])
+                Installs.append(list_Others[x])
            
             if headings[x].text == 'Size' :
-                list_elements.append(list_Others[x])
+                Size.append(list_Others[x])
            
             if headings[x].text == 'Content rating' :
-                list_elements.append(list_Others[x])
+                Content.append(list_Others[x])
            
             if headings[x].text == 'Offered By' :
-                list_elements.append(list_Others[x])
+                Offered.append(list_Others[x])
            
             if headings[x].text == 'Developer' :
                 for y in list_Others[x].split("\n"):
                     if '@' in y:
-                        list_elements.append(y)
+                        Developer.append(y)
                         break
-
-            list_all.append(list_elements)
-
       #  print(list_all)
     for i in range(0,len(list_all)):
         list_all[i] = list(dict.fromkeys(list_all[i]))
-    df= pd.DataFrame(list_all,columns=['URL','Name','Genre','Description','Ratings','Size','Install','Offered By','Developer'])
-    df.to_csv('F:\UET Files\scraping_playstore.csv',mode='a',header = True, index=False)
+    df= pd.DataFrame({'Title':Title,'URL':url,'Genre':genre,'Installs':Installs,'Ratings':Rating,'Offered by':Offered,'Developer':Developer})
+    df.to_csv('E:\CS261F21PID46-main\scrapingplaystore.csv',mode='a',header = True, index=False)
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
