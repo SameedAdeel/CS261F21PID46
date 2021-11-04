@@ -75,7 +75,6 @@ def ReadData(url):
     links_app = list(dict.fromkeys(links_app))
     for elem in links_app:
         Scrapping(elem)
-        driver.close()
 
 def Scrapping(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -186,8 +185,7 @@ def Scrapping(url):
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
-    driver.close()
     #return count
    # return list_all
 
-ReadData('https://play.google.com/store/apps/category/WEATHER')
+ReadData('https://play.google.com/store/apps')
