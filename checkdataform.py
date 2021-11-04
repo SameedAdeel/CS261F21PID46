@@ -20,15 +20,13 @@ class Ui_MainWindow2(object):
                 self.tableWidget.setRowCount(df.shape[0])
                 self.tableWidget.setColumnCount(df.shape[1])
                 self.tableWidget.setHorizontalHeaderLabels(df.columns)
-
+                print(df)
                 for row in df.iterrows():
                         values = row[1]
                         for col_index,value in enumerate(values):
 
-                           """ if isinstance(value,(float,int)):
-                                   value='{0:0,.0f}',format(value) """
-                        tableitem=QtWidgets.QTableWidgetItem(str(value))
-                        self.tableWidget.setItem(row[0],col_index,tableitem)
+                                tableitem=QtWidgets.QTableWidgetItem(str(value))
+                                self.tableWidget.setItem(row[0],col_index,tableitem)
 
         def setupUi(self, MainWindow):
                 MainWindow.setObjectName("MainWindow")
@@ -191,4 +189,4 @@ def CheckData ():
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-CheckData()
+#CheckData()
