@@ -10,7 +10,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pandas as pd
-excel_dir=r'F:\UET Files\3rd Semester\CS261F21PID46scrapingplaystore.csv'
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QTableView, QHeaderView, QVBoxLayout
+from PyQt5.QtCore import Qt, QSortFilterProxyModel
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+excel_dir=r'D:\home task\3rd semester\Mid term Project\CS261F21PID46\CS261F21PID46scrapingplaystore.csv'
 class Ui_MainWindow2(object):
         def loaddata(self,path):
                 df= pd.read_csv(path)
@@ -179,7 +183,8 @@ class Ui_MainWindow2(object):
                 self.pushButton_2.setText(_translate("MainWindow", "Search"))
                 self.pushButton_3.setText(_translate("MainWindow", "Search"))
                 self.pushButton.setText(_translate("MainWindow", "Load"))
-
+               # search()
+                
 def CheckData ():
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -190,3 +195,25 @@ def CheckData ():
     MainWindow.show()
     sys.exit(app.exec_())
 #CheckData()
+def search ():
+        mainLayout = Ui_MainWindow2()
+        for row, i in enumerate(excel_dir):
+            item = int(excel_dir(i))
+            excel_dir.setItem(row, 0, item)
+        model = QStandardItemModel(len(excel_dir), 1)
+        filter_proxy_model = QSortFilterProxyModel()
+        filter_proxy_model.setSourceModel(model)
+        filter_proxy_model.setFilterCaseSensitivity(Qt.CaseInsensitive)
+        filter_proxy_model.setFilterKeyColumn(0)
+        search_field = QLineEdit()          
+        search_field.setStyleSheet('font-size: 35px; height: 60px;')
+        search_field.textChanged.connect(filter_proxy_model.setFilterRegExp)
+        mainLayout.addWidget(search_field)
+        table = QTableView()
+        table.setModel(filter_proxy_model)
+        mainLayout.addWidget(table)
+
+        Ui_MainWindow2.setLayout(mainLayout)
+
+        
+        
