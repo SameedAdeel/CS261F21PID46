@@ -186,7 +186,7 @@ def Scrapping(url):
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
-    driver.close()
+    #driver.close()
     #return count
    # return list_all
 
