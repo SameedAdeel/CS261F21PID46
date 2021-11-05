@@ -47,35 +47,6 @@ for i in links_app :
         comments = driver.find_element_by_class_name('EymY4b')
         print(comments)
  """
-def ReadData(url):
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.get(url)
-    time.sleep(10)
-    Scroll_time=5
-
-    last_height=driver.execute_script("return document.body.scrollHeight")
-
-    while True:
-        driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
-
-        time.sleep(Scroll_time)
-
-        new_height= driver.execute_script("return document.body.scrollHeight")
-
-        if new_height== last_height :
-            break
-        last_height = new_height
-    links_app = []
-
-    elems = driver.find_elements_by_xpath("//a[@href]")
-
-    for elem in elems :
-        if "cluster?clp=" in elem.get_attribute("href"):
-            links_app.append(elem.get_attribute("href"))
-    links_app = list(dict.fromkeys(links_app))
-    for elem in links_app:
-        Scrapping(elem)
-        driver.close()
 
 def Scrapping(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -119,7 +90,7 @@ def Scrapping(url):
         if "details?id" in elem.get_attribute("href"):
             links_app.append(elem.get_attribute("href"))
     links_app = list(dict.fromkeys(links_app))
-    print(links_app)
+#print(links_app)
     count=0
 #title = driver.find_element_by_tag_name("span")
 #print(str(title.text))
@@ -186,8 +157,5 @@ def Scrapping(url):
             #comments = driver.find_element_by_class_name('EymY4b')
             #print(comments)
     print(count)
-    driver.close()
-    #return count
+    return count
    # return list_all
-
-ReadData('https://play.google.com/store/apps/category/WEATHER')
